@@ -24,8 +24,10 @@ func main() {
 	}
 
 	for l := range c {
-		go checkLink(l, c)
-		time.Sleep(100 * time.Millisecond)
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			checkLink(link, c)
+		}(l)
 	}
 
 }
